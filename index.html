@@ -12,15 +12,45 @@
   <label for="num2">Número 2:</label>
   <input type="number" id="num2" />
   <br>
-  <button id="sumar">Sumar</button>
+  <button id="sumar">+</button>
+  <button id="restar">-</button>
+  <button id="multiplicar">x</button>
+  <button id="porcentaje">%</button>
   <p id="resultado"></p>
 
 <script>
-  const btn = document.getElementById('sumar');
-  btn.addEventListener('click', () => {
+  const sumarBtn = document.getElementById('sumar');
+  const restarBtn = document.getElementById('restar');
+  const multiplicarBtn = document.getElementById('multiplicar');
+  const porcentajeBtn = document.getElementById('porcentaje');
+
+  function obtenerValores() {
     const n1 = parseFloat(document.getElementById('num1').value) || 0;
     const n2 = parseFloat(document.getElementById('num2').value) || 0;
+    return [n1, n2];
+  }
+
+  sumarBtn.addEventListener('click', () => {
+    const [n1, n2] = obtenerValores();
     const resultado = n1 + n2;
+    document.getElementById('resultado').textContent = "Resultado: " + resultado;
+  });
+
+  restarBtn.addEventListener('click', () => {
+    const [n1, n2] = obtenerValores();
+    const resultado = n1 - n2;
+    document.getElementById('resultado').textContent = "Resultado: " + resultado;
+  });
+
+  multiplicarBtn.addEventListener('click', () => {
+    const [n1, n2] = obtenerValores();
+    const resultado = n1 * n2;
+    document.getElementById('resultado').textContent = "Resultado: " + resultado;
+  });
+
+  porcentajeBtn.addEventListener('click', () => {
+    const [n1, n2] = obtenerValores();
+    const resultado = (n1 * n2) / 100;
     document.getElementById('resultado').textContent = "Resultado: " + resultado;
   });
 </script>
